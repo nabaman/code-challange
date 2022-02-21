@@ -25,4 +25,11 @@ untuk kedepannya saya ingin mengimplementasikan :
 - Authentication 
 
 
+testing deployment
+link native django
+http://3.0.61.254/product
+
+link with front end
+http://3.0.61.254/
+
 
