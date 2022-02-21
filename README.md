@@ -33,11 +33,11 @@ untuk menjalankan pastikan sudah terinstall docker dan docker compose
 docker-compose -f docker-compose-dev.yml up --build
 
 testing deployment
-link native django
+link native django <br />
 http://3.0.61.254/product <br />
 http://localhost/product
 
-link with front end
+link with front end <br />
 http://3.0.61.254/ <br />
 http://localhost/
 
