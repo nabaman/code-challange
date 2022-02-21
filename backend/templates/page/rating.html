@@ -1,0 +1,30 @@
+{% extends "snippets/base.html" %}
+{% block content %}
+    <div class="container container-fluid">
+        <div class="title mt-5">
+            <h1><b>Whats Your Rating</b></h1>
+        </div>
+        <div class="mt-4">
+            <h3>Rating</h3>
+            <form method="post" id="rating">
+                {% csrf_token %}
+                <p class="stars">
+                  <span class="star-container">
+                    <a class="star-1" href="#">1</a>
+                    <a class="star-2" href="#">2</a>
+                    <a class="star-3" href="#">3</a>
+                    <a class="star-4" href="#">4</a>
+                    <a class="star-5" href="#">5</a>
+                  </span>
+                </p>
+                <div class="form-group">
+                    <label for="review">Review</label>
+                    <textarea class="form-control" name="review-content" id="review" rows="3" required></textarea>
+                    <input id="star-review" type="text" required name="star" style="display: none">
+                    <button type="submit" class="mt-4 btn btn-light btn-lg">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

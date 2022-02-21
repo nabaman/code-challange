@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include "snippets/style.html" %}
+    {% block custom_style %}
+
+    {% endblock %}
+
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block content %}
+
+{% endblock %}
+
+{% include "snippets/script.html" %}
+{% block custom_script %}
+{% endblock %}
+</body>
+</html>

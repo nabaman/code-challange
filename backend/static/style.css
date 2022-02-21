@@ -1,0 +1,75 @@
+.stars-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #ccc
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #ffc107;
+}
+
+.review-table {
+    font-size: 30px;
+}
+
+.stars input {
+    position: absolute;
+    left: -999999px;
+
+}
+
+.stars a {
+    display: inline-block;
+    padding-right: 4px;
+    text-decoration: none;
+    margin: 0;
+}
+
+.stars a:after {
+    position: relative;
+    font-size: 18px;
+    font-family: 'Font Awesome 5 Free';
+    display: block;
+    content: "\f005";
+    color: #ccc;
+}
+
+
+span {
+    font-size: 0;
+}
+
+.stars a:hover ~ a:after {
+    color: #ccc !important;
+}
+
+span.active a.active ~ a:after {
+    color: #ccc;
+}
+
+span:hover a:after {
+    color: #ffc107 !important;
+}
+
+span.active a:after,
+.stars a.active:after {
+    color: #ffc107;
+}

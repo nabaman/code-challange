@@ -1,0 +1,54 @@
+{% extends "snippets/base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="title text-center mt-5">
+            <h1>{{ product.title }}</h1>
+        </div>
+        <div class="review-table">
+            <table class="w-100 table">
+                <tbody>
+                <tr class="rating-content">
+                    <td style="width: 10%; text-align: center"><b class="number-rating"
+                                                                  id="main-rating">{{ product.rating }}</b></td>
+                    <td style="width: 40%; text-align: center">
+                        <div class="stars-outer">
+                            <div data-rating="{{ product.ratingToPercentage }}" id="main-star"
+                                 class="stars-inner"></div>
+                        </div>
+                    </td>
+                    <td style="width: 30%;text-align: right">
+                        <a href="{% url 'rating' id=product.id %}" class="btn btn-light btn-lg">add review</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="review-list" style="margin-top:50px">
+            <div class="p-2">
+                <h4><b>REVIEWS</b></h4>
+            </div>
+            <table class="w-100 table table-borderless" id="my-table">
+                <tbody>
+                {% for review in product.reviewproduct_set.all %}
+                    <tr class="rating-content">
+                        <td style="width: 30%; text-align: left">
+                            <div class="stars-outer">
+                                <div class="stars-inner" data-rating="{{ review.starToPercentage }}"></div>
+                            </div>
+                        </td>
+                        <td style="width: 10%; text-align: center"><p class="number-rating">{{ review.star }}</p></td>
+                        <td style="width: 30%;text-align: right">
+                            <p>{{ review.review_content }}</p>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+{% load static %}
+{% block custom_script %}
+    <script src={% static "ws.js" %}></script>
+{% endblock %}

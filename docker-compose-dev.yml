@@ -1,0 +1,80 @@
+version: "3.7"
+
+services:
+  django:
+    container_name: django_container
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+      - django_static_volume:/usr/src/app/staticfiles
+    expose:
+      - 8000
+    env_file:
+      - ./backend/.env
+    command: gunicorn artpedia.wsgi --bind 0.0.0.0:8000 --workers 4 --threads 4
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - ./backend/.env-db-dev
+  celery:
+    build: backend
+    command: celery -A artpedia worker -B -l INFO
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - django
+      - redis
+    env_file:
+      - ./backend/.env
+  channels:
+    build: backend
+    container_name: django_channels
+    volumes:
+      - ./backend:/usr/src/app
+    command: daphne -b 0.0.0.0 -p 8001 artpedia.asgi:application
+    depends_on:
+      - django
+      - redis
+    expose:
+      - 8001
+    env_file:
+      - backend/.env
+  react:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - API_SERVER=${ENV_API_SERVER}
+    volumes:
+      - react_static_volume:/usr/src/app/build/static
+    expose:
+      - 3000
+    env_file:
+      - .env
+    command: serve -s build -l 3000
+    depends_on:
+      - django
+  nginx:
+    restart: always
+    build: ./nginx/dev
+    volumes:
+      - django_static_volume:/usr/src/app/staticfiles
+      - react_static_volume:/usr/src/app/build/static
+    ports:
+      - 80:80
+    depends_on:
+      - react
+  redis:
+    image: "redis:alpine"
+    ports:
+      - '6379:6379'
+volumes:
+  postgres_data:
+  django_static_volume:
+  react_static_volume:
