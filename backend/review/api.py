@@ -22,7 +22,6 @@ def productApi(request):
     # res["Access-Control-Allow-Headers"] = "*"
     return res
 
-
 @api_view(['GET'])
 def reviewApi(request, id):
     prd, created = Product.objects.get_or_create(title="The Minimalist Entrepreneur")
