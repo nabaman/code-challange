@@ -29,13 +29,16 @@ untuk menghindari error,
 tolong kunjungi link native django terlebih dahulu,
 jika sudah terlanjur error, hapus folder data, lalu build ulang.
 
+untuk menjalankan pastikan sudah terinstall docker dan docker compose
+docker-compose -f docker-compose-dev.yml up --build
+
 testing deployment
 link native django
-http://3.0.61.254/product
+http://3.0.61.254/product <br />
 http://localhost/product
 
 link with front end
-http://3.0.61.254/
+http://3.0.61.254/ <br />
 http://localhost/
 
 
