@@ -25,11 +25,17 @@ untuk kedepannya saya ingin mengimplementasikan :
 - Authentication 
 
 
+untuk menghindari error,
+tolong kunjungi link native django terlebih dahulu,
+jika sudah terlanjur error, hapus folder data, lalu build ulang.
+
 testing deployment
 link native django
 http://3.0.61.254/product
+http://localhost/product
 
 link with front end
 http://3.0.61.254/
+http://localhost/
 
 
