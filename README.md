@@ -29,7 +29,7 @@ untuk menghindari error,
 tolong kunjungi link native django terlebih dahulu,
 jika sudah terlanjur error, hapus folder data, lalu build ulang.
 
-untuk menjalankan pastikan sudah terinstall docker dan docker compose
+untuk menjalankan pastikan sudah terinstall docker dan docker compose <br />
 docker-compose -f docker-compose-dev.yml up --build
 
 testing deployment
